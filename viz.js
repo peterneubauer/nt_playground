@@ -7,7 +7,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 var layerControl = L.control.layers();
 layerControl.addTo(map);
 
-function loadGeoJson(location) {
+function loadGeoJson(location, layername) {
     $.getJSON( location, function( data ) {
         console.log(data);
         var layer = L.geoJson(data,{
@@ -15,14 +15,14 @@ function loadGeoJson(location) {
                 return {color: feature.properties.color};
             }
         }).bindPopup(function (layer) {
-            return "name: "+layer.feature.properties.name + "Viz:" + layer.feature.properties.visual_urls[0];
+            return "name: "+layer.feature.properties.name;
         });
         var group = new L.featureGroup([layer]);
         layer.addTo(map);
         map.fitBounds(group.getBounds());
-        layerControl.addOverlay(layer, location);
+        layerControl.addOverlay(layer, layername);
     });
 }
 
-loadGeoJson("data/biotopes/biotope_1.json");
-loadGeoJson("data/areas/ustorp_1_6.json");
+loadGeoJson("data/biotopes/biotope_1.json", "Biotop 1");
+loadGeoJson("data/areas/ustorp_1_6.json", "Fastighet Ustorp 1:6");
