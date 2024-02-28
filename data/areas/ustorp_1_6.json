@@ -45,7 +45,9 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "skifte 2"
+        "name": "skifte 2",
+        "description": "Test description",
+        "visual_urls": ["https://www.mapillary.com/app/?lat=57.524092512104204&lng=15.251085068831117&z=16.75582912677408&focus=map&pKey=3185213445109111"]
       },
       "geometry": {
         "coordinates": [

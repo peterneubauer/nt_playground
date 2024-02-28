@@ -9,12 +9,13 @@ layerControl.addTo(map);
 
 function loadGeoJson(location) {
     $.getJSON( location, function( data ) {
+        console.log(data);
         var layer = L.geoJson(data,{
             style: function (feature) {
                 return {color: feature.properties.color};
             }
         }).bindPopup(function (layer) {
-            return layer.feature.properties.name;
+            return "name: "+layer.feature.properties.name + "Viz:" + layer.feature.properties.visual_urls[0];
         });
         var group = new L.featureGroup([layer]);
         layer.addTo(map);
